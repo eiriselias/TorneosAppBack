@@ -55,18 +55,6 @@ ________________________________________
 •	Ver resultados
 •	Recibir notificaciones
 ________________________________________
-⚙️ Recomendaciones sobre Sanity
-Pros:
-•	Panel de administración visual para el organizador.
-•	Esquemas flexibles y fácil integración con frontend.
-•	API en tiempo real (ideal para actualizaciones instantáneas).
-Contras:
-•	No es ideal si necesitas lógica compleja del lado del servidor (como cálculos de tabla de posiciones, validaciones cruzadas, etc.).
-🔁 Alternativas si quieres más control del backend:
-•	Supabase: Postgres, con autenticación, almacenamiento y funciones.
-•	Firebase: Realtime DB o Firestore, ideal para apps con notificaciones.
-•	Backend propio con NestJS (si prefieres tener control total).
-________________________________________
 📆 Pasos para organizar tu desarrollo
 1.	Diseño y prototipado UI
 o	Define vistas: login, lista de campeonatos, detalle de campeonato, calendario, tabla de posiciones, etc.
