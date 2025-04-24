@@ -24,16 +24,56 @@ export class JugadorService {
     } 
 
     createPlayer(player: crearJugadorDto){
-            return this.prisma.jugador.create({data:player})
-     }
+        // Transformar el DTO a un formato compatible con Prisma
+        const prismaData = {
+            name: player.name,
+            number: player.number,
+            position: player.position,
+            team: {
+                connect: {
+                    id: player.teamId
+                }
+            }
+        };
+        
+        return this.prisma.jugador.create({data: prismaData});
+    }
 
     async updatePlayer(id: string, data: actulizarJugadorDto){
         const player = await this.getPlayer(id)
-        return this.prisma.jugador.update({where:{id}, data})
+        if (player instanceof NotFoundException) {
+            return player;
+        }
+        
+        // Preparar los datos para la actualización
+        const updateData: any = {};
+        
+        // Agregar campos solo si están definidos
+        if (data.name !== undefined) updateData.name = data.name;
+        if (data.number !== undefined) updateData.number = data.number;
+        if (data.position !== undefined) updateData.position = data.position;
+        
+        // Si se proporciona un nuevo teamId, actualizar la relación con el equipo
+        if (data.teamId !== undefined) {
+            updateData.team = {
+                connect: {
+                    id: data.teamId
+                }
+            };
+        }
+        
+        return this.prisma.jugador.update({
+            where: { id }, 
+            data: updateData
+        });
     }
 
     async deletePlayer(id: string){
         const player = await this.getPlayer(id)
+        if (player instanceof NotFoundException) {
+            return player;
+        }
+        
         return this.prisma.jugador.delete({where:{id}})
     }
 

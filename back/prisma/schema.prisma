@@ -126,7 +126,7 @@ model Gol{
   id  String @id @default(cuid())
   playerId  String
   player  Jugador @relation(fields: [playerId],references: [id])
-  partidoId String
-  partido Partido @relation(fields: [partidoId], references: [id])
+  matchId String
+  match Partido @relation(fields: [matchId], references: [id])
   autogol Boolean
 }

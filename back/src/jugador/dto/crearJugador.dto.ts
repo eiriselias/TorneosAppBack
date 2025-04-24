@@ -8,8 +8,8 @@ import{
     IsArray,
     ValidateNested
 } from 'class-validator'
-import { crearEquipoDto } from 'src/equipo/dto/crearEquipo.dto'
 import { crearGolDto } from 'src/gol/dto/crearGolDto'
+
 export class crearJugadorDto {
 
     @IsString()
@@ -18,7 +18,7 @@ export class crearJugadorDto {
 
     @IsNumber()
     @IsOptional()
-    number?:number
+    number?: number
 
     @IsIn(["portero","defensor","mediocampista","delantero"],{
         message: 'La posision debe ser portero, defensor, mediocampista o delantero'
@@ -30,9 +30,8 @@ export class crearJugadorDto {
     @Type(()=>crearGolDto)
     goals:crearGolDto[];
 
-    @ValidateNested()
-    @Type(()=>crearEquipoDto)
-    team: crearEquipoDto
+    @IsString()
+    teamId: string
 
     id?: string
 }
