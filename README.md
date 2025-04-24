@@ -1,4 +1,6 @@
 # TorneosApp
+
+limpiar la bade de datos - npx prisma migrate reset
 ________________________________________
 🧱 Estructura básica del contenido (en Sanity)
 

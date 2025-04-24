@@ -7,7 +7,7 @@ export default function App() {
     <View className="flex justify-center items-center bg-blue-500 w-[100vw] ">
       <StatusBar style="auto" />
       <Text className="text-2xl font-bold text-white">
-        Ensayando ando! 
+        ensayar! 
       </Text>
       
     </View>
