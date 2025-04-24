@@ -1,17 +1,8 @@
 import { Type } from "class-transformer"
-import { IsDate, isObject, ValidateNested, IsIn, IsArray, IsInt } from "class-validator"
+import { IsDate, ValidateNested, IsIn, IsArray, IsInt } from "class-validator"
 import { crearCampeonatoDto } from "src/campeonato/dto/crearCampeonato.dto"
 import { crearEquipoDto } from "src/equipo/dto/crearEquipo.dto"
 import { crearGolDto } from "src/gol/dto/crearGolDto"
-
-class resultadoDto{
-
-    @IsInt()
-    goals_local: number
-
-    @IsInt()
-    goals_visitante: number
-}
 
 export class crearPartidoDto{
 
@@ -26,9 +17,11 @@ export class crearPartidoDto{
     @IsDate()
     date: Date
 
-    @ValidateNested()
-    @Type(()=>resultadoDto)
-    result: resultadoDto
+    @IsInt()
+    goals_local: number
+
+    @IsInt()
+    goals_visitante: number
 
     @ValidateNested()
     @Type(()=>crearCampeonatoDto)

@@ -8,6 +8,7 @@ import{
     IsArray,
     ValidateNested
 } from 'class-validator'
+import { crearEquipoDto } from 'src/equipo/dto/crearEquipo.dto'
 import { crearGolDto } from 'src/gol/dto/crearGolDto'
 export class crearJugadorDto {
 
@@ -28,6 +29,10 @@ export class crearJugadorDto {
     @ValidateNested({each:true})
     @Type(()=>crearGolDto)
     goals:crearGolDto[];
+
+    @ValidateNested()
+    @Type(()=>crearEquipoDto)
+    team: crearEquipoDto
 
     id?: string
 }

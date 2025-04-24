@@ -13,9 +13,120 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Jugador {
+
+//-----------------------CAMPEONATO-------------------------------
+enum Estado{
+  por_iniciar
+  en_juego
+  terminado
+}
+
+enum Tipo{
+  futbol_11
+  futbol_9
+  futbol_sala
+}
+
+model Campeonato {
   id    String @id @default(cuid())
   name  String
-  position  String
+  date_start  DateTime
+  date_end DateTime?
+  stade Estado
+  tipe  Tipo
+  teams Equipo[] @relation("EquiposCampeonato")
+  matches Partido[]
 
+  firstId String?
+  first Equipo?  @relation("first", fields: [firstId], references: [id])
+
+  secondId String?
+  second Equipo? @relation("second", fields: [secondId], references: [id])
+
+  thirdId String?
+  third Equipo? @relation("third", fields: [thirdId], references: [id])
+
+  fourthId String?
+  fourth Equipo? @relation("fourth", fields: [fourthId], references: [id])
+
+}
+
+//-------------------EQUIPO--------------
+
+model Equipo{
+   id    String @id @default(cuid())
+   name String
+   shield String?
+   players  Jugador[]
+   tournaments Campeonato[] @relation("EquiposCampeonato")
+   pj Int?
+   pg Int?
+   pe Int?
+   pp Int?
+   gt Int?
+   gc Int?
+   pts  Int?  
+
+   first Campeonato[] @relation("first") 
+   second Campeonato[] @relation("second")
+   third Campeonato[] @relation("third")
+   fourth Campeonato[] @relation("fourth")
+   local Partido[] @relation("local")
+   visitante Partido[] @relation("visitante")
+   
+}
+
+//------------------PARTIDOS----------------
+
+enum EstadosPartido{
+  grupos
+  octavos
+  cuartos
+  semifinal
+  final
+}
+
+model Partido{
+  id  String  @id @default(cuid())
+  team_localId  String
+  team_local  Equipo @relation("local",fields: [team_localId], references: [id])
+  team_visitanteId  String
+  team_visitante  Equipo @relation("visitante", fields: [team_visitanteId], references: [id])
+  date  DateTime
+  goals_local Int
+  goals_visitante Int
+  tournamentId  String
+  tournament Campeonato @relation(fields: [tournamentId], references: [id])
+  stage EstadosPartido
+  goals Gol[]
+}
+
+//-----------------JUGADORES-----------------
+
+enum Posicion{
+  portero
+  defensor
+  mediocampista
+  delantero
+}
+
+model Jugador{
+  id String @id @default(cuid())
+  name  String
+  number  Int?
+  position  Posicion
+  goals Gol[]
+  teamId  String
+  team  Equipo  @relation(fields: [teamId], references: [id])
+
+}
+
+//------------------GOLES-------------------
+model Gol{
+  id  String @id @default(cuid())
+  playerId  String
+  player  Jugador @relation(fields: [playerId],references: [id])
+  partidoId String
+  partido Partido @relation(fields: [partidoId], references: [id])
+  autogol Boolean
 }

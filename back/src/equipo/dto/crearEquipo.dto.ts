@@ -10,6 +10,7 @@ export class crearEquipoDto{
     name: string
     
     @IsString()
+    @IsOptional()
     shield: string //url o imagen del escudo
 
     @IsArray()
