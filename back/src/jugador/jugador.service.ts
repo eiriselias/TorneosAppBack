@@ -9,7 +9,12 @@ export class JugadorService {
     constructor(private prisma: PrismaService){}   
     
     getAllPlayers(){
-        return this.prisma.jugador.findMany()
+        return this.prisma.jugador.findMany({
+            include:{
+                team: true,
+                goals: true
+            }
+        })
     }
 
     async getPlayer(id: string){

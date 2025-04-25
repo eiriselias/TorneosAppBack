@@ -1,5 +1,5 @@
 import { Type } from "class-transformer"
-import { IsArray, IsInt, IsOptional, IsString, MinLength, ValidateNested } from "class-validator"
+import { IsArray, IsInt, IsOptional, IsString, IsUrl, MinLength, ValidateNested } from "class-validator"
 import { crearCampeonatoDto } from "src/campeonato/dto/crearCampeonato.dto"
 import { crearJugadorDto } from "src/jugador/dto/crearJugador.dto"
 
@@ -9,7 +9,7 @@ export class crearEquipoDto{
     @MinLength(3)
     name: string
     
-    @IsString()
+    @IsUrl()
     @IsOptional()
     shield: string //url o imagen del escudo
 

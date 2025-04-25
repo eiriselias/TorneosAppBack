@@ -28,10 +28,8 @@ export class crearJugadorDto {
     @IsArray()
     @ValidateNested({each:true})
     @Type(()=>crearGolDto)
-    goals:crearGolDto[];
+    goals?:crearGolDto[];
 
     @IsString()
-    teamId: string
-
-    id?: string
+    teamId?: string
 }
