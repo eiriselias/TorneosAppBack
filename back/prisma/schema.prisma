@@ -93,6 +93,8 @@ model Partido{
   team_visitanteId  String
   team_visitante  Equipo @relation("visitante", fields: [team_visitanteId], references: [id])
   date  DateTime
+  place String
+  time  String
   goals_local Int
   goals_visitante Int
   tournamentId  String
