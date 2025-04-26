@@ -63,7 +63,7 @@ model Equipo{
    pg Int?
    pe Int?
    pp Int?
-   gt Int?
+   gf Int?
    gc Int?
    pts  Int?  
 

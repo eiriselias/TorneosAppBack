@@ -79,7 +79,8 @@ export class JugadorService {
             return player;
         }
         
-        return this.prisma.jugador.delete({where:{id}})
+        this.prisma.jugador.delete({where:{id}})
+        return `El jugador ${player.name} fue eliminado`
     }
 
 

@@ -7,5 +7,6 @@ import { PartidoModule } from './partido/partido.module';
 
 @Module({
   imports: [GolModule, CampeonatoModule, EquipoModule, JugadorModule, PartidoModule],
+  controllers: [],
 })
 export class AppModule {}

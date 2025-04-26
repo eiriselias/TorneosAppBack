@@ -8,8 +8,6 @@ export class EquipoService {
     constructor(private prisma: PrismaService ){}
 
     createTeam(team: crearEquipoDto){
-        
-
         const prismaData = {
             name: team.name,
             shield: team.shield,
@@ -20,6 +18,13 @@ export class EquipoService {
             gf: team.gf,
             gc: team.gc,
             pts: team.pts,
+            players: {
+                create: team.players.map(player => ({
+                    name: player.name,
+                    number: player.number,
+                    position: player.position
+                }))
+            }
         }
         return this.prisma.equipo.create({data: prismaData})
     }
@@ -71,6 +76,7 @@ export class EquipoService {
             return team;
         }
 
-        return this.prisma.equipo.delete({where:{id}})
+        this.prisma.equipo.delete({where:{id}})
+        return `El equipo ${team.name} fue eliminado`
     }
 }
