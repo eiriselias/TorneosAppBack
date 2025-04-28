@@ -9,7 +9,7 @@ import{
     IsArray,
     ValidateNested
 } from 'class-validator'
-import { crearGolDto } from 'src/gol/dto/crearGolDto'
+import { crearGolDto } from 'src/gol/dto/crearGol.dto'
 
 export class crearJugadorDto {
 
