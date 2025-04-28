@@ -3,7 +3,7 @@ import { EquipoService } from './equipo.service';
 import { crearEquipoDto } from './dto/crearEquipo.dto';
 import { actualizarEquipoDto } from './dto/updateEquipo.dto';
 
-@Controller('teams')
+@Controller('equipo')
 export class EquipoController {
 
     constructor(private equipoService: EquipoService){}

@@ -4,7 +4,7 @@ import { crearJugadorDto } from './dto/crearJugador.dto';
 import { ApiTags } from '@nestjs/swagger'
 import { actulizarJugadorDto } from './dto/actulizarJugador.dto';
 
-@Controller('player')
+@Controller('jugador')
 @ApiTags("players")
 export class JugadorController {
 
