@@ -35,7 +35,6 @@ export class GolService {
             include:{
                 player:true,
                 match:true,
-                team: true,
             }
         })
     }
