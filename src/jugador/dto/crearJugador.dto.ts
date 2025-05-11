@@ -35,7 +35,7 @@ export class crearJugadorDto {
     @Type(()=>crearGolDto)
     goals?:crearGolDto[];
     
-    @ApiProperty({example:"cm9xll4ao0000wg30i5s2p5r8"})
+    @ApiProperty({example:"equipoId??????????"})
     @IsString()
     teamId?: string
 }

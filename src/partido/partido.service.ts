@@ -8,7 +8,12 @@ export class PartidoService {
     constructor(private prisma:PrismaService){}
 
     getAllPartidos(){
-        return this.prisma.partido.findMany()
+        return this.prisma.partido.findMany({
+            include:{
+                team_local: true,
+                team_visitante:true
+            }
+        })
     }
 
     async getPartido(id:string){

@@ -4,12 +4,12 @@ import { IsDate, IsIn, IsInt, IsString, IsOptional } from "class-validator"
 
 export class actualizarPartidoDto{
 
-    @ApiProperty({example:"cm9xll4ao0000wg30i5s2p5r8"})
+    @ApiProperty({example:"equipoId?????????"})
     @IsString()
     @IsOptional()
     team_localId: string
 
-    @ApiProperty({example:"cm9xll4ao0000wg30i5s2p5r8"})
+    @ApiProperty({example:"equipoId?????????"})
     @IsString()
     @IsOptional()
     team_visitante: string
@@ -39,7 +39,7 @@ export class actualizarPartidoDto{
     @IsOptional()
     goals_visitante: number
 
-    @ApiProperty({example:"cm9xl60ja0000wg5wlx19vj0v"})
+    @ApiProperty({example:"torneoId????????????"})
     @IsString()
     @IsOptional()
     tournamentId: string

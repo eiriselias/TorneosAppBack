@@ -1,20 +1,21 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { Type } from "class-transformer"
-import { IsDate, ValidateNested, IsIn, IsArray, IsInt, IsString } from "class-validator"
+import { IsDate, ValidateNested, IsIn, IsArray, IsInt, IsString, IsOptional } from "class-validator"
 import { crearGolDto } from "src/gol/dto/crearGol.dto"
 
 export class crearPartidoDto{
 
-    @ApiProperty({example:"cm9xll4ao0000wg30i5s2p5r8"})
+    @ApiProperty({example:"equipoId??????????"})
     @IsString()
     team_localId: string
 
-    @ApiProperty({example:"cm9xll4ao0000wg30i5s2p5r8"})
+    @ApiProperty({example:"equipoId???????????"})
     @IsString()
     team_visitanteId: string
 
     @ApiProperty({example:"2025-01-01"})
     @IsDate()
+    @Type(()=>Date)
     date: Date
 
     @ApiProperty({example:"30:00 pm"})
@@ -27,13 +28,15 @@ export class crearPartidoDto{
 
     @ApiProperty({example:3})
     @IsInt()
+    @IsOptional()
     goals_local: number
 
     @ApiProperty({example:1})
     @IsInt()
+    @IsOptional()
     goals_visitante: number
 
-    @ApiProperty({example:"cm9xl60ja0000wg5wlx19vj0v"})
+    @ApiProperty({example:"campeonatoId??????"})
     @IsString()
     tournamentId: string
 
@@ -43,6 +46,7 @@ export class crearPartidoDto{
     })
     stage: "grupos"|"octavos"|"cuartos"|"semifinal"|"final"
 
+    @ApiProperty({example:"[]"})
     @IsArray()
     @ValidateNested({each:true})
     @Type(()=>crearGolDto)

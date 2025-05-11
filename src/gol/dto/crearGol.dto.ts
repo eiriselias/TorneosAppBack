@@ -4,16 +4,16 @@ import { IsBoolean, IsOptional, IsString} from "class-validator"
 
 export class crearGolDto{
 
-    @ApiProperty({example: "cm9xll4ao0000wg30i5s2p5r8"})
+    @ApiProperty({example: "jugadorId???????"})
     @IsString()
     @IsOptional()
     playerId:string
 
-    @ApiProperty({example: "cm9xll4ao0000wg30i5s2p5r8"})
+    @ApiProperty({example: "equipoId????????"})
     @IsString()
     teamId:string
 
-    @ApiProperty({example: "cm9xll4ao0000wg30i5s2p5r8"})
+    @ApiProperty({example: "partidoId??????"})
     @IsString()
     matchId: string
 

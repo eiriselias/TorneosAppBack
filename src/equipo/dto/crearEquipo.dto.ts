@@ -1,7 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { Type } from "class-transformer"
 import { IsArray, IsInt, IsOptional, IsString, IsUrl, MinLength, ValidateNested } from "class-validator"
-import { crearCampeonatoDto } from "src/campeonato/dto/crearCampeonato.dto"
 import { crearJugadorDto } from "src/jugador/dto/crearJugador.dto"
 
 export class crearEquipoDto{
@@ -22,11 +21,9 @@ export class crearEquipoDto{
     @Type(()=>crearJugadorDto)
     players: crearJugadorDto[]
 
-    @ApiProperty({example:'[]'})
-    @IsArray()
-    @ValidateNested({each:true})
-    @Type(()=>crearCampeonatoDto)
-    tournaments: crearCampeonatoDto[]
+    @ApiProperty({example:'capeonatoId?????????????'})
+    @IsString()
+    tournamentId: string
 
     @IsInt()
     @IsOptional()

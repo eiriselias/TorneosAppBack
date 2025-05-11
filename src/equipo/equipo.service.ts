@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { crearEquipoDto } from './dto/crearEquipo.dto';
 import { actualizarEquipoDto } from './dto/updateEquipo.dto';
+import { connect } from 'http2';
 
 @Injectable()
 export class EquipoService {
@@ -18,6 +19,11 @@ export class EquipoService {
             gf: team.gf,
             gc: team.gc,
             pts: team.pts,
+            tournaments: {
+                connect:{
+                    id: team.tournamentId
+                }
+            },
             players: {
                 create: team.players.map(player => ({
                     name: player.name,

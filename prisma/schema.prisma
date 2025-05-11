@@ -34,7 +34,7 @@ model Campeonato {
   date_end DateTime?
   stade Estado
   tipe  Tipo
-  teams Equipo[] @relation("EquiposCampeonato")
+  teams Equipo[]
   matches Partido[]
 
   firstId String?
@@ -58,7 +58,9 @@ model Equipo{
    name String
    shield String?
    players  Jugador[]
-   tournaments Campeonato[] @relation("EquiposCampeonato")
+   goals Gol[]
+   tournamentId String
+   tournaments Campeonato @relation(fields: [tournamentId], references: [id])
    pj Int?
    pg Int?
    pe Int?
@@ -95,8 +97,8 @@ model Partido{
   date  DateTime
   place String
   time  String
-  goals_local Int
-  goals_visitante Int
+  goals_local Int @default(0)
+  goals_visitante Int @default(0)
   tournamentId  String
   tournament Campeonato @relation(fields: [tournamentId], references: [id])
   stage EstadosPartido
@@ -130,5 +132,7 @@ model Gol{
   player  Jugador @relation(fields: [playerId],references: [id])
   matchId String
   match Partido @relation(fields: [matchId], references: [id])
+  teamId String
+  team Equipo @relation(fields:[teamId], references:[id])
   autogol Boolean
 }

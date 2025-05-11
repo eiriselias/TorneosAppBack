@@ -20,7 +20,7 @@ export class actulizarJugadorDto {
     @IsOptional()
     position?: "portero"|"defensor"|"mediocampista"|"delantero"
 
-    @ApiProperty({example:"cm9xll4ao0000wg30i5s2p5r8"})
+    @ApiProperty({example:"equipoId??????????"})
     @IsString()
     @IsOptional()
     teamId?: string

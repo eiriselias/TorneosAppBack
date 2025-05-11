@@ -31,7 +31,13 @@ export class GolService {
     }
 
     getAllGol(){
-        return this.prisma.gol.findMany()
+        return this.prisma.gol.findMany({
+            include:{
+                player:true,
+                match:true,
+                team: true
+            }
+        })
     }
 
     async getGol(id:string){
